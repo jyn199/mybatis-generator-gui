@@ -61,6 +61,17 @@ public class MybatisGeneratorBridge {
         TableConfiguration tableConfig = new TableConfiguration(context);
         tableConfig.setTableName(generatorConfig.getTableName());
         tableConfig.setDomainObjectName(generatorConfig.getDomainObjectName());
+
+        // 生成的删除不必要的
+        tableConfig.setUpdateByExampleStatementEnabled(false);
+        tableConfig.setCountByExampleStatementEnabled(false);
+        tableConfig.setSelectByExampleStatementEnabled(false);
+        tableConfig.setDeleteByExampleStatementEnabled(false);
+//        tableConfig.setInsertStatementEnabled(false);
+//        tableConfig.setUpdateByPrimaryKeyStatementEnabled(false);
+//        tableConfig.setDeleteByPrimaryKeyStatementEnabled(false);
+//        tableConfig.setSelectByPrimaryKeyStatementEnabled(false);
+
         // add ignore columns
         if (ignoredColumns != null) {
             ignoredColumns.stream().forEach(ignoredColumn -> {
